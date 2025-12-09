@@ -1,0 +1,22 @@
+---
+- name: Install Slurm base package
+  apt:
+    name: slurm-wlm
+    state: present
+    update_cache: yes
+
+- name: Ensure /etc/slurm exists
+  file:
+    path: /etc/slurm
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Deploy slurm.conf
+  template:
+    src: slurm.conf.j2
+    dest: /etc/slurm/slurm.conf
+    owner: root
+    group: root
+    mode: 0644

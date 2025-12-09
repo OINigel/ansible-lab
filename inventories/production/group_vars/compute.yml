@@ -1,0 +1,5 @@
+---
+is_slurm_compute: true
+has_gpu: false         # true on real Rocky, false here
+has_ceph_client: false # true on real Rocky
+enable_apptainer: true

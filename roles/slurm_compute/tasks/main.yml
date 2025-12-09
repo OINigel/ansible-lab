@@ -1,0 +1,21 @@
+---
+- import_role:
+    name: slurm_common
+
+- name: Install slurmd
+  apt:
+    name: slurm-wlm
+    state: present
+    update_cache: yes
+
+- name: Ensure slurm user exists
+  user:
+    name: slurm
+    system: yes
+
+- name: Enable and start slurmd
+  systemd:
+    name: slurmd
+    enabled: true
+    state: started
+

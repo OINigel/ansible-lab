@@ -1,0 +1,39 @@
+# ============================
+#  Slurm Configuration
+# ============================
+
+ClusterName={{ slurm_cluster_name }}
+SlurmctldHost={{ slurm_controller_hostname }}
+SlurmctldHost={{ slurm_backup_controller_hostname }}
+
+SlurmUser=slurm
+SlurmdUser=slurm
+
+SlurmctldPort=6817
+SlurmdPort=6818
+
+StateSaveLocation=/var/spool/slurm
+SlurmdSpoolDir=/var/spool/slurmd
+
+AuthType=auth/munge
+ReturnToService=2
+
+ProctrackType=proctrack/cgroup
+TaskPlugin=task/none
+
+SchedulerType=sched/backfill
+SlurmctldTimeout=300
+SlurmdTimeout=300
+
+# ---- Node definitions ----
+{% for node in groups['compute'] %}
+NodeName={{ hostvars[node].inventory_hostname }} \
+    NodeAddr={{ hostvars[node].ansible_host }} \
+    CPUs={{ hostvars[node].slurm_cpus | default(4) }} \
+    RealMemory={{ hostvars[node].slurm_mem | default(1024) }} \
+    State=UNKNOWN
+{% endfor %}
+
+# ---- Partitions ----
+PartitionName=debug Nodes={{ groups['compute'] | join(',') }} Default=NO MaxTime=INFINITE State=UP
+PartitionName=Main Nodes={{ groups['compute'] | join(',') }} Default=YES MaxTime=INFINITE State=UP

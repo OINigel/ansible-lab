@@ -1,0 +1,59 @@
+- import_role:
+    name: slurm_common
+
+- name: Install Slurm controller + DB packages
+  apt:
+    name:
+      - slurm-wlm
+      - slurmdbd
+      - mariadb-server
+    state: present
+    update_cache: yes
+
+- name: Ensure slurm user exists
+  user:
+    name: slurm
+    system: yes
+
+- name: Create state directory
+  file:
+    path: /var/spool/slurm
+    state: directory
+    owner: slurm
+    group: slurm
+    mode: '0755'
+
+- name: Deploy slurmdbd.conf
+  copy:
+    dest: /etc/slurm/slurmdbd.conf
+    content: |
+      DbdHost={{ slurm_controller_hostname }}
+      DbdPort=6819
+      SlurmUser=slurm
+      StorageType=accounting_storage/mysql
+      StorageHost=localhost
+      StorageUser=slurm
+      StoragePass=slurm
+      StorageLoc=slurm_acct_db
+      LogFile=/var/log/slurmdbd.log
+    owner: slurm
+    group: slurm
+    mode: '0600'
+
+- name: Enable and start mariadb
+  systemd:
+    name: mariadb
+    enabled: true
+    state: started
+
+- name: Enable and start slurmdbd
+  systemd:
+    name: slurmdbd
+    enabled: true
+    state: started
+
+- name: Enable and start slurmctld
+  systemd:
+    name: slurmctld
+    enabled: true
+    state: started

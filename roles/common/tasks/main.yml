@@ -1,0 +1,30 @@
+---
+- name: Ensure base packages are installed
+  apt:
+    name:
+      - vim
+      - curl
+      - git
+      - htop
+      - net-tools
+      - jq
+      - chrony
+    state: present
+    update_cache: yes
+
+- name: Configure chrony
+  copy:
+    dest: /etc/chrony/chrony.conf
+    content: |
+      pool {{ chrony_ntp_servers[0] }} iburst
+      driftfile /var/lib/chrony/chrony.drift
+      makestep 1.0 3
+      rtcsync
+      logdir /var/log/chrony
+  notify: restart chrony
+
+- name: Enable chrony
+  systemd:
+    name: chrony
+    enabled: true
+    state: started

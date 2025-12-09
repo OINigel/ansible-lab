@@ -1,0 +1,23 @@
+---
+- hosts: all
+  roles:
+    - common
+    - munge
+    - slurm_common
+    - node_exporter
+
+- hosts: rocky-slurmctld
+  roles:
+    - slurm_controller
+
+- hosts: rocky-slurmctld2
+  roles:
+    - slurm_backup_controller
+
+- hosts: compute
+  roles:
+    - slurm_compute
+
+- hosts: monitor
+  roles:
+    - monitoring_server

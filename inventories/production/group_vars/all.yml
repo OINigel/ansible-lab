@@ -1,0 +1,13 @@
+---
+ansible_become: true
+
+cluster_name: "gcp-rocky-test"
+
+# Slurm
+slurm_cluster_name: "gcp-rocky-test"
+slurm_controller_hostname: "rocky-slurmctld"
+slurm_backup_controller_hostname: "rocky-slurmctld2"
+
+# Chrony
+chrony_ntp_servers:
+  - "time.google.com"

@@ -1,0 +1,25 @@
+---
+- name: Install munge
+  apt:
+    name: munge
+    state: present
+
+- name: Ensure munge user exists
+  user:
+    name: munge
+    system: yes
+    shell: /usr/sbin/nologin
+
+- name: Deploy munge key
+  copy:
+    src: munge.key
+    dest: /etc/munge/munge.key
+    owner: munge
+    group: munge
+    mode: '0400'
+
+- name: Enable and start munge
+  systemd:
+    name: munge
+    enabled: true
+    state: started
