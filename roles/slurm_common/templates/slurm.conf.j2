@@ -21,9 +21,11 @@ SlurmdTimeout=300
 ProctrackType=proctrack/cgroup
 TaskPlugin=task/none
 
-# Nodes – one entry per compute host in the 'compute' group
-{% for node in groups['compute'] | default([]) %}
-NodeName={{ node }} CPUs=4 RealMemory=1024 State=UNKNOWN
+{% for node in groups['compute'] %}
+NodeName={{ node }} \
+  CPUs={{ hostvars[node].ansible_facts.processor_vcpus | default(4) }} \
+  RealMemory={{ hostvars[node].ansible_facts.memtotal_mb | default(1024) }} \
+  State=UNKNOWN
 {% endfor %}
 
 PartitionName=debug Nodes={{ groups['compute'] | default([]) | join(',') }} Default=NO  MaxTime=INFINITE State=UP
