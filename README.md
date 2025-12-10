@@ -14,27 +14,6 @@ Templated Slurm configuration (CPU/RAM autodiscovered)
 
 The goal is to provide a fully reproducible, automated way to deploy & maintain an HPC cluster.
 
-📁 Repository Structure
-rocky-ansible/
-├── ansible.cfg                 # Global Ansible configuration
-├── inventories/
-│   ├── production/
-│   │   ├── hosts.yml           # Static inventory (optional)
-│   │   ├── group_vars/         # Cluster-wide vars
-│   │   └── host_vars/          # Per-node overrides
-│   └── dynamic/
-│       └── slurm_inventory.py  # Dynamic inventory powered by 'sinfo'
-├── roles/
-│   ├── common/                 # Base packages, chrony, etc.
-│   ├── munge/                  # Munge setup
-│   ├── node_exporter/          # Node exporter install
-│   ├── monitoring_server/      # Prometheus + Grafana
-│   ├── slurm_common/           # Shared Slurm templates
-│   ├── slurm_controller/
-│   ├── slurm_backup_controller/
-│   └── slurm_compute/
-└── site.yml                    # Main playbook
-
 🔧 Requirements
 
 On the Ansible controller:
