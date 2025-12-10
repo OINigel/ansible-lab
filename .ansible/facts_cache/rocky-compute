@@ -32,17 +32,17 @@
     "ansible_date_time": {
         "date": "2025-12-10",
         "day": "10",
-        "epoch": "1765388759",
-        "epoch_int": "1765388759",
-        "hour": "17",
-        "iso8601": "2025-12-10T17:45:59Z",
-        "iso8601_basic": "20251210T174559521864",
-        "iso8601_basic_short": "20251210T174559",
-        "iso8601_micro": "2025-12-10T17:45:59.521864Z",
-        "minute": "45",
+        "epoch": "1765403397",
+        "epoch_int": "1765403397",
+        "hour": "21",
+        "iso8601": "2025-12-10T21:49:57Z",
+        "iso8601_basic": "20251210T214957902312",
+        "iso8601_basic_short": "20251210T214957",
+        "iso8601_micro": "2025-12-10T21:49:57.902312Z",
+        "minute": "49",
         "month": "12",
-        "second": "59",
-        "time": "17:45:59",
+        "second": "57",
+        "time": "21:49:57",
         "tz": "UTC",
         "tz_dst": "UTC",
         "tz_offset": "+0000",
@@ -527,7 +527,7 @@
         "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin",
         "PWD": "/home/olusegun_inetianbor_amii_ca",
         "SHELL": "/bin/bash",
-        "SUDO_COMMAND": "/bin/sh -c echo BECOME-SUCCESS-xzktglhmqowzctowssrrrengfcbmlwzl ; /usr/bin/python3",
+        "SUDO_COMMAND": "/bin/sh -c echo BECOME-SUCCESS-cwzjbqbujybgtzjozqxscrdqiypqbcyh ; /usr/bin/python3",
         "SUDO_GID": "1266152911",
         "SUDO_UID": "1266152911",
         "SUDO_USER": "olusegun_inetianbor_amii_ca",
@@ -541,8 +541,8 @@
     "ansible_hostname": "rocky-compute",
     "ansible_hostnqn": "nqn.2014-08.org.nvmexpress:uuid:d77d08d8-f876-4f60-bc2f-b670212cbcb9",
     "ansible_interfaces": [
-        "lo",
-        "ens4"
+        "ens4",
+        "lo"
     ],
     "ansible_is_chroot": false,
     "ansible_iscsi_iqn": "",
@@ -637,8 +637,8 @@
     },
     "ansible_loadavg": {
         "15m": 0.0,
-        "1m": 0.0126953125,
-        "5m": 0.01953125
+        "1m": 0.0,
+        "5m": 0.01513671875
     },
     "ansible_local": {},
     "ansible_locally_reachable_ips": {
@@ -666,16 +666,16 @@
     },
     "ansible_machine": "x86_64",
     "ansible_machine_id": "0a49f723e4f24e8ab2a20e545f60cc54",
-    "ansible_memfree_mb": 12826,
+    "ansible_memfree_mb": 12794,
     "ansible_memory_mb": {
         "nocache": {
-            "free": 15465,
-            "used": 525
+            "free": 15488,
+            "used": 502
         },
         "real": {
-            "free": 12826,
+            "free": 12794,
             "total": 15990,
-            "used": 3164
+            "used": 3196
         },
         "swap": {
             "cached": 0,
@@ -687,18 +687,18 @@
     "ansible_memtotal_mb": 15990,
     "ansible_mounts": [
         {
-            "block_available": 1039203,
+            "block_available": 1096353,
             "block_size": 4096,
             "block_total": 2266466,
-            "block_used": 1227263,
+            "block_used": 1170113,
             "device": "/dev/root",
             "fstype": "ext4",
-            "inode_available": 1094939,
+            "inode_available": 1094027,
             "inode_total": 1179648,
-            "inode_used": 84709,
+            "inode_used": 85621,
             "mount": "/",
             "options": "rw,relatime,discard,errors=remount-ro,commit=30",
-            "size_available": 4256575488,
+            "size_available": 4490661888,
             "size_total": 9283444736,
             "uuid": "799f24fb-d49b-4dd8-b333-2a90908d6ea8"
         },
@@ -871,7 +871,7 @@
     "ansible_system_capabilities": [],
     "ansible_system_capabilities_enforced": "False",
     "ansible_system_vendor": "Google",
-    "ansible_uptime_seconds": 607324,
+    "ansible_uptime_seconds": 621962,
     "ansible_user_dir": "/root",
     "ansible_user_gecos": "root",
     "ansible_user_gid": 0,
