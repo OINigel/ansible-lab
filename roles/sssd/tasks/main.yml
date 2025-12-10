@@ -1,0 +1,12 @@
+---
+
+- name: Install SSSD packages (generic)
+  ansible.builtin.package:
+    name: "{{ sssd_packages }}"
+    state: present
+
+- name: Enable and start SSSD service
+  ansible.builtin.service:
+    name: sssd
+    enabled: true
+    state: started

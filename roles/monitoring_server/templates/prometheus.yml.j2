@@ -9,11 +9,15 @@ scrape_configs:
       - targets:
           - 'localhost:9090'
 
-  # Scrape node exporter on mgmt + compute nodes
+# Scrape node_exporter on all cluster nodes
   - job_name: 'node_exporter'
     static_configs:
       - targets:
-{% for host in (groups['mgmt'] + groups['compute']) %}
-{%   set target_ip = hostvars[host].ansible_host | default(host) %}
-          - '{{ target_ip }}:9100'
+{% set node_groups =
+     (groups['compute'] | default([]))
+   + (groups['slurm_controller'] | default([]))
+   + (groups['slurm_backup_controller'] | default([]))
+   + (groups['monitor'] | default([])) %}
+{% for host in node_groups %}
+          - '{{ host }}:9100'
 {% endfor %}

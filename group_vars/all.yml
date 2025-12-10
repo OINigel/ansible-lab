@@ -11,3 +11,7 @@ slurm_backup_controller_hostname: "rocky-slurmctld2"
 # Chrony
 chrony_ntp_servers:
   - "time.google.com"
+
+sssd_packages:
+  - sssd
+  - sssd-tools

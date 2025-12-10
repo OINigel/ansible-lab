@@ -5,6 +5,7 @@
     - munge
     - slurm_common
     - node_exporter
+    - sssd
 
 - hosts: rocky-slurmctld
   roles:
